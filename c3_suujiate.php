@@ -10,7 +10,7 @@ $rightOfReply = 0;
 
 echo "ランダムな数字があります。3回以内で当ててください。\n";
 
-while(1) {
+while(1){
     $rightOfReply++;
     $answe = readline($rightOfReply."回目の回答：");
 

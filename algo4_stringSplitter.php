@@ -9,6 +9,32 @@ var_dump($str);
 
 echo "分断するキーワード文字を入力してください\n";
 $keyword = trim(fgetc(STDIN));
-var_dump($keyword);
 
-function stringSplitter($str, $keyword) {}
+
+function stringSplitter($str, $keyword)
+{
+    $put = "";
+    $array = array();
+    for($i = 0; $i < countLen($str); $i++) {
+        if($str[$i] == $keyword) {
+            $array[] = $put;
+            $put = "";
+            continue;
+        }
+        $put .= $str[$i];
+    }
+    $array[] = $put;
+    return $array;
+}
+
+function countLen($str)
+{
+    $lenCounter = 0;
+    while($str[$lenCounter] != null) {
+        $lenCounter++;
+    }
+    return $lenCounter;
+}
+
+$result = stringSplitter($str, $keyword);
+var_dump($result);

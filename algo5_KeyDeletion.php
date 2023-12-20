@@ -41,12 +41,16 @@ function deleteWord($str, $deleteWordConvertedToArray)
 {
     $result = "";
     for($i = 0 ; $i < countLen($str) ; $i++) {
-        foreach($deleteWordConvertedToArray as $key) {
-            if($str[$i] == $key) {
-                $str[$i] = ' ';      //“”カラ文字に変えるとエラーになる
+        $Found = false;
+        foreach ($deleteWordConvertedToArray as $key) {
+            if ($str[$i] == $key) {
+                $Found = true;
+                break;
             }
         }
-        $result .= $str[$i];
+        if (!$Found) {
+            $result .= $str[$i];
+        }
     }
     return $result;
 }

@@ -16,7 +16,14 @@ function stringSplitter($str, $keyword)
     $put = "";
     $array = array();
     for($i = 0; $i < countLen($str); $i++) {
+
         if($str[$i] == $keyword) {
+            if($i == 0) {
+                continue;
+            }
+            if($str[$i - 1] == $keyword) {
+                continue;
+            }
             $array[] = $put;
             $put = "";
             continue;

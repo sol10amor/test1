@@ -1,24 +1,21 @@
 <?php
+
 // 1. 文字列を受け取り、シャッフルした文字列を返す関数
-
-function shuffleString($str) 
+function shuffleString($str)
 {
-    // 文字列を一文字ずつ分割して配列にする
-    $arrayStr = str_split($str);
-    
-    $strlen = count($arrayStr);
-    for ($i = $strlen - 1; $i > 0; $i--) 
-    {
-        $rndI = mt_rand(0, $i);
-
-        // 配列要素をシャッフル
-        $temp = $arrayStr[$i];
-        $arrayStr[$i] = $arrayStr[$rndI];
-        $arrayStr[$rndI] = $temp;
+    $lastIndex = strlen($str) - 1;
+    for ($i = 0; $i < $lastIndex  ; $i++) {
+        $str = swap($str, $i, mt_rand($i, $lastIndex));
     }
-    //配列を文字列に直す
-    $shfStr = implode("", $arrayStr);
-    return $shfStr; 
+    return $str;
+}
+
+function swap($str, $i, $rndI)
+{
+    $temp = $str[$i];
+    $str[$i] = $str[$rndI];
+    $str[$rndI] = $temp;
+    return $str;
 }
 
 echo "文字を入力せよ\n";

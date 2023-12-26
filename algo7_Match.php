@@ -23,8 +23,13 @@ function CountLen($str2)
 
 function Verification($str, $str2)
 {
+    if(CountLen($str) < CountLen($str2)) {
+        echo "一つ目の文字列より照合する文字列が長いです";
+        return $judgement = false;
+    }
+
     $in = 0;
-    for($i = ((CountLen($str)) - (CountLen($str2))) ; $i < CountLen($str); $i++) {
+    for($i = (CountLen($str)) - (CountLen($str2)) ; $i < CountLen($str); $i++) {
 
         if($str[$i] == $str2[$in]) {
             $countNam = $i + 1;
